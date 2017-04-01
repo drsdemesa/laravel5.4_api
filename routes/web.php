@@ -18,7 +18,3 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 });
-
-Route::group(["prefix" => "api/v1"], function() {
-	Route::resource('lessons', 'LessonsController');
-});
