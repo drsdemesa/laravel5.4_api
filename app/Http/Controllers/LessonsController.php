@@ -12,6 +12,6 @@ class LessonsController extends Controller
     	$lessons = Lesson::all();	//really bad practice	
     	return Response::json([
     		'data' => $lessons->toArray()
-    	], 404);
+    	], 200);
     }
 }
