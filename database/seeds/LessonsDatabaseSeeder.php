@@ -17,7 +17,7 @@ class LessonsDatabaseSeeder extends Seeder {
 			DB::table('lessons')->insert([
 	            'title' => $faker->sentence(5),
 	            'body' => $faker->paragraph(4),
-	            'created_at' => Carbon\Carbon::now(),
+	            'is_displayed' => $faker->boolean(),
 	            'updated_at' => Carbon\Carbon::now()
        	 	]);
 		}
