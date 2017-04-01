@@ -38,7 +38,7 @@ class LessonsController extends Controller
 		return [
 			'title' => $lesson['title'],
 			'body' => $lesson['body'],
-			'some_bool' => $lesson['is_displayed']
+			'some_bool' => (boolean)$lesson['is_displayed']
 		];
 
     }
