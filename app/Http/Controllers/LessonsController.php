@@ -11,7 +11,7 @@ class LessonsController extends Controller
     public function index(){
     	$lessons = Lesson::all();	//really bad practice	
     	return Response::json([
-    		'data' => $lessons->toArray()
+    		'data' => $this->transformCollection($lessons)
     	], 200);
     }
 
@@ -27,8 +27,23 @@ class LessonsController extends Controller
     		], '404');
     	} else{
     		return Response::json([
-    			'data' => $lesson->toArray()
+    			'data' => $this->transform($lesson)
     		],200);
     	}
+    }
+
+    private function transform($lesson){
+    	// print_r($lesson);
+
+		return [
+			'title' => $lesson['title'],
+			'body' => $lesson['body'],
+			'some_bool' => $lesson['is_displayed']
+		];
+
+    }
+
+    public function transformCollection ($lessons) {
+    	return array_map([$this, 'transform'], $lessons->toArray());
     }
 }
