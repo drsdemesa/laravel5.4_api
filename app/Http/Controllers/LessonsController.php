@@ -19,9 +19,9 @@ class LessonsController extends ApiController
 	}
     public function index(){
     	$lessons = Lesson::all();	//really bad practice	
-    	return Response::json([
+    	return $this->respond([
     		'data' => $this->lessonTransformer->transformCollection($lessons->all())
-    	], 200);
+    	]);
     }
 
     public function show( $id ){
@@ -30,9 +30,9 @@ class LessonsController extends ApiController
     	if( !$lesson){
     		return $this->respondNotFound("Lesson does not exist..");
     	} else{
-    		return Response::json([
+    		return $this->respond([
     			'data' => $this->lessonTransformer->transform($lesson)
-    		],200);
+    		]);
     	}
     }
 

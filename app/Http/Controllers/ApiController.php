@@ -13,6 +13,11 @@ class ApiController extends Controller {
 		return $this->statusCode;
 	}
 
+	/*
+	* @param mixed statusCode
+	* @return this
+	*/
+
 	public function setStatusCode($statusCode){
 		$this->statusCode = $statusCode;
 
