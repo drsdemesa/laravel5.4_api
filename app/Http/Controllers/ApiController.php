@@ -33,6 +33,10 @@ class ApiController extends Controller {
 		return Response::json($data, $this->getStatusCode(), $headers);
 	}
 
+	public function respondInternalError($message = "Internal error."){
+		return $this->setStatusCode(500)->respondWithError($message);
+	}
+
 	public function respondWithError($message){
 		return $this->respond([
     			'error' => [
