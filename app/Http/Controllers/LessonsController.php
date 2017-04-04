@@ -21,7 +21,7 @@ class LessonsController extends Controller
     public function index(){
     	$lessons = Lesson::all();	//really bad practice	
     	return Response::json([
-    		'data' => $this->lessonTransformer->transformCollection($lessons->toArray())
+    		'data' => $this->lessonTransformer->transformCollection($lessons->all())
     	], 200);
     }
 
