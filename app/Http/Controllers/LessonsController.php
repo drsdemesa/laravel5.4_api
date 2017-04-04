@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Lesson;
 use App\Blog54\Transformers\LessonTransformer;
 
@@ -44,7 +45,13 @@ class LessonsController extends ApiController
     }
 
     public function store(){
-    	dd('store');
+    	if( !Input::get('title') or !Input::get('body') or !Input::get('is_displayed', '')) {
+    		return $this->respondInvalidParams("Parameters failed validation for a lesson.");
+    	}
+
+    	Lesson::create(Input::all());
+    	return $this->respondCreated("Successfully created new lesson.");
+
     }
 
 }

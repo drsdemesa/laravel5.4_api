@@ -37,6 +37,17 @@ class ApiController extends Controller {
 		return $this->setStatusCode(500)->respondWithError($message);
 	}
 
+	public function respondInvalidParams($message = "Invalid params."){
+		return $this->setStatusCode(422)->respondWithError($message);
+	}
+
+	public function respondCreated($message = "Successfully created."){
+		return $this->setStatusCode(201)->respond([
+    			"message" => $message,
+    			"status" => "success"
+    		]);
+	}
+
 	public function respondWithError($message){
 		return $this->respond([
     			'error' => [
