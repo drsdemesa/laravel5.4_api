@@ -5,13 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lesson;
 use Response;
+use App\Blog54\Transformers\LessonTransformer;
 
 class LessonsController extends Controller
 {
+	/*
+	* @var Blog54\Transformers\LessonTransformer
+	*/
+
+	protected $lessonTransformer;
+
+	function __construct(LessonTransformer $lessonTransformer) {
+		$this->lessonTransformer = $lessonTransformer;
+	}
     public function index(){
     	$lessons = Lesson::all();	//really bad practice	
     	return Response::json([
-    		'data' => $this->transformCollection($lessons)
+    		'data' => $this->lessonTransformer->transformCollection($lessons->toArray())
     	], 200);
     }
 
@@ -27,23 +37,10 @@ class LessonsController extends Controller
     		], '404');
     	} else{
     		return Response::json([
-    			'data' => $this->transform($lesson)
+    			'data' => $this->lessonTransformer->transform($lesson)
     		],200);
     	}
     }
 
-    private function transform($lesson){
-    	// print_r($lesson);
 
-		return [
-			'title' => $lesson['title'],
-			'body' => $lesson['body'],
-			'some_bool' => (boolean)$lesson['is_displayed']
-		];
-
-    }
-
-    public function transformCollection ($lessons) {
-    	return array_map([$this, 'transform'], $lessons->toArray());
-    }
 }
