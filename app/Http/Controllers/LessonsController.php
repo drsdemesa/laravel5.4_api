@@ -28,7 +28,7 @@ class LessonsController extends ApiController
     	$lesson = Lesson::find($id);
 
     	if( !$lesson){
-    		return $this->respondNotFound();
+    		return $this->respondNotFound("Lesson does not exist..");
     	} else{
     		return Response::json([
     			'data' => $this->lessonTransformer->transform($lesson)
