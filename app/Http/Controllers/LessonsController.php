@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lesson;
-use Response;
 use App\Blog54\Transformers\LessonTransformer;
 
-class LessonsController extends Controller
+class LessonsController extends ApiController
 {
 	/*
 	* @var Blog54\Transformers\LessonTransformer
@@ -29,12 +28,7 @@ class LessonsController extends Controller
     	$lesson = Lesson::find($id);
 
     	if( !$lesson){
-    		return Response::json([
-    			'error' => [
-    				'message' => 'Lesson does not exist',
-    				'code' => '215'
-    			]
-    		], '404');
+    		return $this->respondNotFound();
     	} else{
     		return Response::json([
     			'data' => $this->lessonTransformer->transform($lesson)
