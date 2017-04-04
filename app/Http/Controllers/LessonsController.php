@@ -16,7 +16,10 @@ class LessonsController extends ApiController
 
 	function __construct(LessonTransformer $lessonTransformer) {
 		$this->lessonTransformer = $lessonTransformer;
+
+		// $this->beforeFilter('auth.basic');
 	}
+
     public function index(){
     	// if(!DB::connection()->getDatabaseName()){
 	    	//return $this->respondInternalError("Something is wrong with database connection");
@@ -40,5 +43,8 @@ class LessonsController extends ApiController
     	}
     }
 
+    public function store(){
+    	dd('store');
+    }
 
 }
