@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Response as IllimunateResponse;
 use Response;
 
 class ApiController extends Controller {
@@ -8,10 +9,10 @@ class ApiController extends Controller {
 	* @var int
 	*/
 	protected $statusCode = 200;
-	const HTTP_NOT_FOUND = 404;
-	const HTTP_INTERNAL_ERR = 500;
+	// const HTTP_NOT_FOUND = 404;
+	// const HTTP_INTERNAL_ERR = 500;
 	const HTTP_UNPROCESSABLE_ENT = 422;
-	const HTTP_SUCCESS_PROCESS = 201;
+	// const HTTP_SUCCESS_PROCESS = 201;
 
 	public function getStatusCode(){
 		return $this->statusCode;
@@ -29,8 +30,8 @@ class ApiController extends Controller {
 	}
 
 	public function respondNotFound($message = "Not found!"){
-		return $this->setStatusCode(self::HTTP_NOT_FOUND)->respondWithError($message);
-		
+		// return $this->setStatusCode(self::HTTP_NOT_FOUND)->respondWithError($message);
+		return $this->setStatusCode(IllimunateResponse::HTTP_NOT_FOUND)->respondWithError($message);	
 	}
 
 	public function respond($data, $headers = []){
@@ -38,7 +39,7 @@ class ApiController extends Controller {
 	}
 
 	public function respondInternalError($message = "Internal error."){
-		return $this->setStatusCode(self::HTTP_INTERNAL_ERR)->respondWithError($message);
+		return $this->setStatusCode(IllimunateResponse::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
 	}
 
 	public function respondInvalidParams($message = "Invalid params."){
@@ -46,7 +47,7 @@ class ApiController extends Controller {
 	}
 
 	public function respondCreated($message = "Successfully created."){
-		return $this->setStatusCode(self::HTTP_SUCCESS_PROCESS)->respond([
+		return $this->setStatusCode(IllimunateResponse::HTTP_CREATED)->respond([
     			"message" => $message,
     			"status" => "success"
     		]);
