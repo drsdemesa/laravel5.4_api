@@ -45,7 +45,7 @@ class LessonsController extends ApiController
     }
 
     public function store(){
-    	if( !Input::get('title') or !Input::get('body') or !Input::get('is_displayed', '')) {
+    	if( !Input::get('title') or !Input::get('body') or !Input::has('is_displayed')) {
     		return $this->respondInvalidParams("Parameters failed validation for a lesson.");
     	}
 
