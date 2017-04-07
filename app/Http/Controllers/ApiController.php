@@ -8,6 +8,10 @@ class ApiController extends Controller {
 	* @var int
 	*/
 	protected $statusCode = 200;
+	const HTTP_NOT_FOUND = 404;
+	const HTTP_INTERNAL_ERR = 500;
+	const HTTP_UNPROCESSABLE_ENT = 422;
+	const HTTP_SUCCESS_PROCESS = 201;
 
 	public function getStatusCode(){
 		return $this->statusCode;
@@ -25,7 +29,7 @@ class ApiController extends Controller {
 	}
 
 	public function respondNotFound($message = "Not found!"){
-		return $this->setStatusCode(404)->respondWithError($message);
+		return $this->setStatusCode(self::HTTP_NOT_FOUND)->respondWithError($message);
 		
 	}
 
@@ -34,15 +38,15 @@ class ApiController extends Controller {
 	}
 
 	public function respondInternalError($message = "Internal error."){
-		return $this->setStatusCode(500)->respondWithError($message);
+		return $this->setStatusCode(self::HTTP_INTERNAL_ERR)->respondWithError($message);
 	}
 
 	public function respondInvalidParams($message = "Invalid params."){
-		return $this->setStatusCode(422)->respondWithError($message);
+		return $this->setStatusCode(self::HTTP_UNPROCESSABLE_ENT)->respondWithError($message);
 	}
 
 	public function respondCreated($message = "Successfully created."){
-		return $this->setStatusCode(201)->respond([
+		return $this->setStatusCode(self::HTTP_SUCCESS_PROCESS)->respond([
     			"message" => $message,
     			"status" => "success"
     		]);
