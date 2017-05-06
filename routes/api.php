@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::group(["prefix" => "v1", 'middleware' => ['auth.basic'],"on" => "post"], function() {
 Route::group(["prefix" => "v1"], function() {
 	Route::resource('lessons', 'LessonsController');
-	Route::resource('tags', 'LessonsController', ["only" => ['index', 'show']]);
+	Route::resource('tags', 'TagsController', ["only" => ['index', 'show']]);
 });

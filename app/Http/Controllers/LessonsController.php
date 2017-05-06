@@ -33,7 +33,7 @@ class LessonsController extends ApiController
     }
 
     public function show( $id ){
-    	$lesson = Lesson::find($id);
+    	$lesson = Lesson::find($id);   //retrieve a model by its primary key
 
     	if( !$lesson){
     		return $this->respondNotFound("Lesson does not exist..");
