@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
 class TagsDatabaseSeeder extends Seeder
@@ -14,7 +15,7 @@ class TagsDatabaseSeeder extends Seeder
 		$faker = Faker::create();
 
 		foreach (range(1,10) as $index) {
-			Tag::create([
+			App\Tag::create([
 				'tag_name' => $faker->word
 			]);
 		}
