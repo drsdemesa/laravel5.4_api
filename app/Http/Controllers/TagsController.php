@@ -20,7 +20,7 @@ class TagsController extends ApiController
 
     public function index(){
 
-    	$tags = Tag::all(); //really bad practice	
+    	$tags = Tag::all(); //really bad practice, has to return only a number of resources at a time especially in a case of large table contents
     	return $this->respond([
     		'data' => $this->tagTransformer->transformCollection($tags->all())
     	]);
