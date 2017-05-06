@@ -4,6 +4,13 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
+    private $tables = [
+        'lessons', 
+        'tags', 
+        'users', 
+        'lesson_tag'
+        ];
     /**
      * Run the database seeds.
      *
@@ -24,11 +31,17 @@ class DatabaseSeeder extends Seeder
          //    DB::table('users')->delete();
          //    DB::table('tags')->delete();
 
+        // DB::table('lessons')->truncate();
+        // DB::table('users')->truncate();
+        // DB::table('tags')->truncate();
+        // DB::table('lesson_tag')->truncate();
+
         DB::statement("SET FOREIGN_KEY_CHECKS=0");
-        DB::table('lessons')->truncate();
-        DB::table('users')->truncate();
-        DB::table('tags')->truncate();
-        DB::table('lesson_tag')->truncate();
+
+        foreach($this->tables as $tableName){
+            DB::table($tableName)->truncate();
+        }
+        
         DB::statement("SET FOREIGN_KEY_CHECKS=1");
     }
 }
