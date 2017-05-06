@@ -13,8 +13,12 @@ class DatabaseSeeder extends Seeder
     {
     	DB::table('lessons')->truncate();
         DB::table('users')->truncate();
+        DB::table('tags')->truncate();
+        DB::table('lesson_tag')->truncate();
 
         $this->call(LessonsDatabaseSeeder::class);
         $this->call(UsersDatabaseSeeder::class);
+        $this->call(TagsDatabaseSeeder::class);
+        $this->call(LessonTagDatabaseSeeder::class);
     }
 }
