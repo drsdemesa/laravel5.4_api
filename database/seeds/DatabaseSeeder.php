@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('tags')->truncate();
         DB::table('lesson_tag')->truncate();
+        DB::statement("SET FOREIGN_KEY_CHECKS=1");
 
         $this->call(LessonsDatabaseSeeder::class);
         $this->call(UsersDatabaseSeeder::class);
