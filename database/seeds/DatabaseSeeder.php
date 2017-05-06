@@ -11,11 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('lessons')->delete();
-        DB::table('users')->delete();
-        DB::table('tags')->delete();
+    	// DB::table('lessons')->delete();
+     //    DB::table('users')->delete();
+     //    DB::table('tags')->delete();
+
+        DB::statement("SET FOREIGN_KEY_CHECKS=0");
+        DB::table('lessons')->truncate();
+        DB::table('users')->truncate();
+        DB::table('tags')->truncate();
         DB::table('lesson_tag')->truncate();
-        
+
         $this->call(LessonsDatabaseSeeder::class);
         $this->call(UsersDatabaseSeeder::class);
         $this->call(TagsDatabaseSeeder::class);
