@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+use App\Lesson;
 use App\Blog54\Transformers\TagTransformer;
 
 class TagsController extends ApiController
@@ -18,9 +19,9 @@ class TagsController extends ApiController
 		$this->tagTransformer = $tagTransformer;	
 	}
 
-    public function index(){
+    public function index($lessonId = null){
 
-    	$tags = Tag::all(); //really bad practice, has to return only a number of resources at a time especially in a case of large table contents
+    	$tags = $lessonId ? Lesson::find($lessonId)->tags : Tag::all(); //really bad practice, has to return only a number of resources at a time especially in a case of large table contents
     	return $this->respond([
     		'data' => $this->tagTransformer->transformCollection($tags->all())
     	]);

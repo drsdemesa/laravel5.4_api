@@ -26,7 +26,7 @@ class LessonsController extends ApiController
 	    	//return $this->respondInternalError("Something is wrong with database connection");
 	   	// }
 
-    	$lessons = Lesson::all();
+    	$lessons = Lesson::all();	//really bad practice	
     	return $this->respond([
     		'data' => $this->lessonTransformer->transformCollection($lessons->all())
     	]);

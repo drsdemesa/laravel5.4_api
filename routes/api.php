@@ -21,4 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(["prefix" => "v1"], function() {
 	Route::resource('lessons', 'LessonsController');
 	Route::resource('tags', 'TagsController', ["only" => ['index', 'show']]);
+	//Route::resource('lessons.tags', 'LessonTagsController'); // one option to show api/v1/lessons/2/tags but it is too much for now
+	// Route::get('lessons/{id}/tags', 'LessonsController@tags'); //another option
+	Route::get('lessons/{id}/tags', 'TagsController@index'); //another option
+
 });
