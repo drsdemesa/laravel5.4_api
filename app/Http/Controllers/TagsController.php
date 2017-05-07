@@ -21,7 +21,7 @@ class TagsController extends ApiController
 
     public function index($lessonId = null){
 
-    	$tags = $lessonId ? Lesson::find($lessonId)->tags : Tag::all(); //really bad practice, has to return only a number of resources at a time especially in a case of large table contents
+    	$tags = $this->getTags($lessonId);
     	return $this->respond([
     		'data' => $this->tagTransformer->transformCollection($tags->all())
     	]);
@@ -39,5 +39,9 @@ class TagsController extends ApiController
     			'data' => $this->tagTransformer->transform($tag)
     		]);
     	}
+    }
+
+    private function getTags( $lessonId ){
+        return $lessonId ? Lesson::find($lessonId)->tags : Tag::all(); //really bad practice, has to return only a number of resources at a time especially in a case of large table contents
     }
 }
