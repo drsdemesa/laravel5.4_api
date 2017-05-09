@@ -11,14 +11,17 @@ class LessonsTest extends ApiTester
     /** @test */
     public function it_fetches_lessons(){
         //arrange
-        $this->times(5)->makeLesson();
+        $this->makeLesson();
 
         //act 
-        $this->getJson('api/v1/lessons');
-
+        $response = $this->get('api/v1/lessons');
         //assert
-        // $response->assertResponseOk();
-        // $response->assertStatus(200);
+        $response->assertStatus(200);
+        $response->assertJsonFragment(array( 'body'));  //some_bool is present but wasn't able to be detected
+        $response->assertJsonFragment(array( 'title'));  //some_bool is present but wasn't able to be detected
+        $response->assertJsonFragment(array( 'some_bool'));  //some_bool is present but wasn't able to be detected
+        $this->assertTrue(true);
+        
     }
 
     private function makeLesson($lessonFields = []){

@@ -25,9 +25,9 @@ class ApiTester extends TestCase
 		return $this;
 	}
 
-    public function getJson( $uri)
-    {
-       return json_encode( $this->call('GET', $uri)->getContent() );
-    }
+    // public function getJson( $uri)
+    // {
+    //    return json_encode( $this->call('GET', $uri)->getContent() );
+    // }
 }
 
