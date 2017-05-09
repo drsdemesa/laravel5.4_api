@@ -32,9 +32,6 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
-             return response()->make('Not found',404);  
-        } 
 
         parent::report($exception);
         
@@ -49,6 +46,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+             return response()->json(['error' => ['message' =>'Resource not found.']], 404);
+        } 
         return parent::render($request, $exception);
     }
 
