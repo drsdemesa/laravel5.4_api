@@ -2,32 +2,38 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
-// use Illuminate\Foundation\Testing\WithoutMiddleware;
-// use Illuminate\Foundation\Testing\DatabaseMigrations;
-// use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\ApiTester;
+use \App\Lesson;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class LessonsTest extends ApiTester
 {
     /** @test */
     public function it_fetches_lessons(){
         //arrange
-        $this->makeLesson();
+        $this->times(5)->makeLesson();
 
         //act 
         $this->getJson('api/v1/lessons');
 
         //assert
-        $this->assertResponseOk();
+        // $response->assertResponseOk();
+        // $response->assertStatus(200);
     }
 
     private function makeLesson($lessonFields = []){
         $lesson = array_merge(
             [
-                'title' => '',
-                'some_bool' => '',
-                'body' => ''
-            ]
+                'title' => $this->fake->sentence,
+                'is_displayed' => $this->fake->boolean,
+                'body' => $this->fake->paragraph,
+            ],
+            $lessonFields  //for overriding in case some fields were passed
         );
+
+        while($this->times--) Lesson::create($lesson);
     }
+
+
+
 }
