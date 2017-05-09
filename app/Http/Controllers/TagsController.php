@@ -42,6 +42,6 @@ class TagsController extends ApiController
     }
 
     private function getTags( $lessonId ){
-        return $lessonId ? Lesson::find($lessonId)->tags : Tag::all(); //really bad practice, has to return only a number of resources at a time especially in a case of large table contents
+        return $lessonId ? Lesson::findOrFail($lessonId)->tags : Tag::all(); //really bad practice to get all(), has to return only a number of resources at a time especially in a case of large table contents
     }
 }

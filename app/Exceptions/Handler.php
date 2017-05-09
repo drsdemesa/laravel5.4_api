@@ -32,7 +32,12 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+             return response()->make('Not found',404);  
+        } 
+
         parent::report($exception);
+        
     }
 
     /**
