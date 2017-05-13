@@ -19,3 +19,12 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/invoice', function () {
+    return view('invoice');
+});
+
+Route::post('/invoices', 'InvoiceController@store');
+
+Route::get('report',function(){
+    return view('invoice');
+});

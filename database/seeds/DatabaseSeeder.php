@@ -9,7 +9,9 @@ class DatabaseSeeder extends Seeder
         'lessons', 
         'tags', 
         'users', 
-        'lesson_tag'
+        'lesson_tag',
+        'invoice',
+        'expenditure'
         ];
     /**
      * Run the database seeds.
@@ -24,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersDatabaseSeeder::class);
         $this->call(TagsDatabaseSeeder::class);
         $this->call(LessonTagDatabaseSeeder::class);
+        $this->call(InvoiceDatabaseSeeder::class);
     }
 
     private function cleanDatabase(){
