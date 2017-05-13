@@ -33,7 +33,5 @@ Route::get('/expenditure', function () {
 Route::post('/invoices', 'InvoiceController@store');
 Route::post('/expenditures', 'ExpendituresController@store');
 
-Route::get('/report',function(){
-    return view('report');
-});
+Route::get('/report','PLReportController@index');
 

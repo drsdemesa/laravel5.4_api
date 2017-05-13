@@ -62,10 +62,14 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            td,th{
+                 padding: 10px;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class=" position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -76,12 +80,52 @@
                     @endif
                 </div>
             @endif
-
+    
             <div class="content">
                 <div class="title m-b-md">
-                    This is where you will see P&L report
+                    P&L Report
                 </div>
+                <div id="report-content" style="margin-left:100px;">
+                    
+                    <table border=1 style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Item</th>
+                                <th>Amount</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <?php 
+                            $outstanding_bal = 0;
+                        ?>
+                        <tbody>
+                            @foreach ($invoices as $invoice)
+                                <?php $outstanding_bal += $invoice->item_amt; // add each invoice?> 
+                                <tr>
+                                    <td>Invoice</td>
+                                    <td>{!! $invoice->item !!}</td>
+                                    <td>SGD {!! number_format($invoice->item_amt, 2, '.', ',') !!}</td>
+                                    <td>SGD {!! number_format($outstanding_bal, 2, '.', ',') !!}</td>
+                                </tr>
+                            @endforeach
+                            @foreach ($expenditures as $expenditure)
+                                <?php $outstanding_bal -= $expenditure->exp_amt; ?>
+                                <tr>
+                                    <td>Expenditure</td>
+                                    <td>{!! $expenditure->exp_item !!}</td>
+                                    <td>SGD {!! number_format($expenditure->exp_amt, 2, '.', ',') !!}</td>
+                                    <td>SGD {!! number_format($outstanding_bal, 2, '.', ',') !!}</td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                <th colspan="3" style="text-align: left;">Total Balance : </th>
+                                <th>SGD {!! number_format($outstanding_bal, 2, '.', ',') !!}</th>
+                            </tr>
+                        </tbody>
 
+                    </table>
+                </div>
             </div>
         </div>
     </body>
