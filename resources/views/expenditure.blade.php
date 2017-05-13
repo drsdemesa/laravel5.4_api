@@ -77,23 +77,11 @@
                 </div>
             @endif
 
-            <div class="content" style="text-align:left;">
+            <div class="content">
                 <div class="title m-b-md">
-                    This is the invoice form
+                    Expenditure $$$
                 </div>
 
-                <form action="invoices" method="POST">
-
-                   Item : <input type="text" name="item" value="Jose" id="item"/><br/>
-                   Item #:  <input type="text" name="item_no" value="100" id="item_no"/><br/>
-                   Item Amount : <input type="text" name="item_amt" value="200.50" id="item_amt"/><br/>
-                   Received Amount : <input type="text" name="received_amt" value="100.50" id="received_amt"/><br/>
-                   Outstanding Balance : <input type="text" name="outstanding_bal" value="100.00" id="outstanding_bal"/><br/>
-                   <input type="submit" id="submit">
-
-                    {{ csrf_field() }}
-
-                </form>
             </div>
         </div>
     </body>

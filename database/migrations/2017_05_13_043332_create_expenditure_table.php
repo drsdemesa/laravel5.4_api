@@ -13,7 +13,7 @@ class CreateExpenditureTable extends Migration
      */
     public function up()
     {
-        Schema::create('expenditure', function (Blueprint $table) {
+        Schema::create('expenditures', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('exp_item');
@@ -29,6 +29,6 @@ class CreateExpenditureTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expenditure');
+        Schema::dropIfExists('expenditures');
     }
 }

@@ -23,8 +23,13 @@ Route::get('/invoice', function () {
     return view('invoice');
 });
 
-Route::post('/invoices', 'InvoiceController@store');
-
-Route::get('report',function(){
-    return view('invoice');
+Route::get('/expenditure', function () {
+    return view('expenditure');
 });
+
+Route::post('invoices/', 'InvoiceController@store');
+
+Route::get('/report',function(){
+    return view('report');
+});
+

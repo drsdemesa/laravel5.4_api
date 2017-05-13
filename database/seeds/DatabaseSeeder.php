@@ -10,8 +10,8 @@ class DatabaseSeeder extends Seeder
         'tags', 
         'users', 
         'lesson_tag',
-        'invoice',
-        'expenditure'
+        'invoices',
+        'expenditures'
         ];
     /**
      * Run the database seeds.

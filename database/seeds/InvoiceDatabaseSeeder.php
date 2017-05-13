@@ -21,7 +21,7 @@ class InvoiceDatabaseSeeder extends Seeder
 			$received_amt = (($received_amt) > 0 )? $received_amt : $item_amt;
 			$outstanding_amt = $item_amt - $received_amt;
 
-			DB::table('invoice')->insert([
+			DB::table('invoices')->insert([
 	            'item' => $faker->word,
 	            'item_no' => $faker->randomDigit,
 	            'created_at' => Carbon\Carbon::now(),
