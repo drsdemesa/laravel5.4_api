@@ -79,9 +79,20 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Expenditure $$$
+                    Expenditure Info
                 </div>
+                
+                <form action="expenditures" method="POST" style="text-align:left;">
 
+                   Item : <input type="text" name="exp_item" value="chairs and tables" id="exp_item" length="200"/><br/>
+                   Amount #:  <input type="text" name="exp_amt" value="500" id="exp_amt"/><br/>
+                   Spent by :  <input type="text" name="spent_by" value="John Smith" id="spent_by"/>
+                   <br/><br/>
+                   <input type="submit" id="submit">
+
+                    {{ csrf_field() }}
+    
+                </form>
             </div>
         </div>
     </body>

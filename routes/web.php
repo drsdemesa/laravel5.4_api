@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/accountingsystem', function () {
+    return view('welcome');
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,7 +30,8 @@ Route::get('/expenditure', function () {
     return view('expenditure');
 });
 
-Route::post('invoices/', 'InvoiceController@store');
+Route::post('/invoices', 'InvoiceController@store');
+Route::post('/expenditures', 'ExpendituresController@store');
 
 Route::get('/report',function(){
     return view('report');

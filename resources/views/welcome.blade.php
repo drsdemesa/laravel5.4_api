@@ -79,15 +79,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Hello World Blog 54
+                    DL Ideas Accounting System
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/invoice">Invoice</a>
+                    <a href="/expenditure">Expenditure</a>
+                    <a href="/report">P&L Report</a>
                 </div>
             </div>
         </div>

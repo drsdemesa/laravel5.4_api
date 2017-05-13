@@ -20,6 +20,7 @@ class ExpenditureDatabaseSeeder extends Seeder
 			DB::table('expenditures')->insert([
 	            'exp_item' => $faker->word,
                 'exp_amt' => $item_amt,
+                'created_at' => Carbon\Carbon::now(),
 	            'updated_at' => Carbon\Carbon::now(),
 	            'spent_by' => $faker->name,
        	 	]);
