@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TagsDatabaseSeeder::class);
         $this->call(LessonTagDatabaseSeeder::class);
         $this->call(InvoiceDatabaseSeeder::class);
+        $this->call(ExpenditureDatabaseSeeder::class);
     }
 
     private function cleanDatabase(){
