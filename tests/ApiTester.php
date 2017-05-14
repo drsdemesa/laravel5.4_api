@@ -3,6 +3,7 @@
 
 namespace Tests;
 
+use Illuminate\Support\Facades\Artisan;
 use Faker\Factory as Faker;
 // use Illuminate\Foundation\Testing\DatabaseMigrations;
 // use Illuminate\Foundation\Testing\DatabaseTransactions; 
@@ -23,6 +24,13 @@ class ApiTester extends TestCase
 		$this->times = $count;
 
 		return $this;
+	}
+
+	public function setUp(){
+		parent::setUp();
+
+		Artisan::call('migrate');
+		// $this->app['artisan']->call('migrate'); //another option
 	}
 
     // public function getJson( $uri)
