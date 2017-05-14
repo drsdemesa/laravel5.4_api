@@ -26,16 +26,10 @@ class ApiTester extends TestCase
 		return $this;
 	}
 
-	public function setUp(){
-		parent::setUp();
+	// public function setUp(){
+	// 	parent::setUp();
 
-		Artisan::call('migrate');
-		// $this->app['artisan']->call('migrate'); //another option
-	}
-
-    // public function getJson( $uri)
-    // {
-    //    return json_encode( $this->call('GET', $uri)->getContent() );
-    // }
+	// 	Artisan::call('migrate');
+	// }
 }
 
