@@ -105,7 +105,8 @@
                                 <tr>
                                     <td>Invoice</td>
                                     <td>{!! $invoice->item !!}</td>
-                                    <td>SGD {!! number_format($invoice->item_amt, 2, '.', ',') !!}</td>
+                                    <!-- <td>SGD {!! number_format($invoice->item_amt, 2, '.', ',') !!}</td> -->
+                                    <td>SGD {!! number_format($invoice->received_amt, 2, '.', ',') !!}</td>
                                     <td>SGD {!! number_format($outstanding_bal, 2, '.', ',') !!}</td>
                                 </tr>
                             @endforeach

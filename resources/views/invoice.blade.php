@@ -62,6 +62,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            span {line-height: 3em;}
         </style>
     </head>
     <body>
@@ -79,16 +80,17 @@
 
             <div class="content" style="text-align:left;">
                 <div class="title m-b-md">
-                    This is the invoice form
+                    Invoice Info 
                 </div>
 
                 <form action="invoices" method="POST">
 
-                   Item : <input type="text" name="item" value="Jose" id="item"/><br/>
-                   Item #:  <input type="text" name="item_no" value="100" id="item_no"/><br/>
-                   Item Amount : <input type="text" name="item_amt" value="200.50" id="item_amt"/><br/>
-                   Received Amount : <input type="text" name="received_amt" value="100.50" id="received_amt"/><br/>
-                   Outstanding Balance : <input type="text" name="outstanding_bal" value="100.00" id="outstanding_bal"/><br/>
+                  <span> Item :</span> <input type="text" name="item" value="SmartEdu subscription" id="item"/><br/>
+                  <span>Item #:</span>  <input type="text" name="item_no" value="100" id="item_no"/><br/>
+                <span>Item Amount :</span> <input type="text" name="item_amt" value="200.50" id="item_amt"/><br/>
+                   <span>Received Amount :</span> <input type="text" name="received_amt" value="100.50" id="received_amt"/><br/>
+                   <span>Outstanding Balance : </span><input type="text" name="outstanding_bal" value="100.00" id="outstanding_bal"/><br/>
+                   <br/>
                    <input type="submit" id="submit">
 
                     {{ csrf_field() }}
