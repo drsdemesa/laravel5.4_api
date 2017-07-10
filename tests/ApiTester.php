@@ -26,10 +26,17 @@ class ApiTester extends TestCase
 		return $this;
 	}
 
-	// public function setUp(){
-	// 	parent::setUp();
+	public function setUp(){
+		parent::setUp();
 
-	// 	Artisan::call('migrate');
-	// }
+		Artisan::call('migrate');
+	}
+
+	public function make($type, array $fields = []){
+		while ($this->times--){
+			$stub = array_merge($this->getStub(), $fields);
+			$type::create($stub);
+		}
+	}
 }
 

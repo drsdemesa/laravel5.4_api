@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    DL Ideas Accounting System
+                    DL Ideas Accounting System - Vagrant hosted
                 </div>
 
                 <div class="links">
