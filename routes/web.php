@@ -35,3 +35,7 @@ Route::post('/expenditures', 'ExpendituresController@store');
 
 Route::get('/report','PLReportController@index');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
